@@ -13,7 +13,7 @@
                     echo $this->build->note('Only put 2 probes in each assimilator.');
                     echo $this->build->item(16, 'Pylon');
                     echo $this->build->item(18, 'Cybernetics Core');
-                    echo $this->build->item(18, 'Gateway');
+                    echo $this->build->item(19, 'Gateway');
                     echo $this->build->event('Cybernetics Core', 'Warpgate Tech');
                     echo $this->build->resource('vespene', 50, 'Stalker');
                     echo $this->build->item(23, 'Pylon');
