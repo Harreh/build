@@ -1,5 +1,4 @@
 <div class='row'>
-				<?php debug($buildOrder);?>
 	<div class='col-md-4'>
 		<div class='row'>
 			<div class='page-header'>
@@ -7,7 +6,7 @@
 			</div>
 			<div class='list-group'>
 				<?php
-					
+
 				?>
 			</div>
 		</div>

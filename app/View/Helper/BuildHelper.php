@@ -3,7 +3,7 @@ App::uses('AppHelper', 'View/Helper');
 
 class BuildHelper extends AppHelper {
 
-	public $helpers = array('html', 'form');
+	public $race;
 
 	public function event($title, $body) {
 		return "
@@ -33,17 +33,20 @@ class BuildHelper extends AppHelper {
 		return "<a class='list-group-item'>".htmlspecialchars($note)."</a>";
 	}
 
-	public function resource($type, $amount, $name) {
-		if (!is_int($amount) || !is_string($name) || !is_string($type)) {
+	public function resource($resource, $amount, $name) {
+		if (!is_int($amount) || !is_string($name) || !is_string($resource)) {
 			throw new CakeException('Incorrect input types for BuildHelper/resource');
 		}
 
-		if (!($type == 'vespene' || $type == 'minerals')) {
-			throw new CakeException('Incorrect input value for BuildHelper/resource');
+		if ($resource == 'vespene') {
+			$resource = 'vespene-'.$this->race;
+		} else if ($resource != 'minerals') {
+			throw new CakeException('Incorrect input values for BuildHelper/resource');
 		}
+
 		return "
 			<a class='list-group-item'>
-				<span class='badge'><img src='/build/img/$type.gif'>&nbsp;$amount</span>
+				<span class='badge'><img src='/build/img/$resource.gif'>&nbsp;$amount</span>
 				<span style='margin-left: 10px'>".htmlspecialchars($name)."</span>
 			</a>
 		";
@@ -55,7 +58,7 @@ class BuildHelper extends AppHelper {
 		}
 		return "
 			<a class='list-group-item'>
-				<span class='badge'><img src='/build/img/minerals.gif'>&nbsp;$minerals&nbsp;<img src='/build/img/vespene.gif'>&nbsp;$vespene</span>
+				<span class='badge'><img src='/build/img/minerals.gif'>&nbsp;$minerals&nbsp;<img src='/build/img/vespene-".$this->race.".gif'>&nbsp;$vespene</span>
 				<span style='margin-left: 10px'>".htmlspecialchars($body)."</span>
 			</a>
 		";

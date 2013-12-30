@@ -6,6 +6,7 @@
 			</div>
 			<div class='list-group'>
 				<?php
+                $this->build->race = 'protoss';
 				echo $this->build->item(9, 'Pylon (Chrono Probes 3 Times)');
 				echo $this->build->item(13, 'Gateway');
 				echo $this->build->item(15, 'Assimilator');
