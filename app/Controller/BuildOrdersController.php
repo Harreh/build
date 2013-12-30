@@ -24,7 +24,7 @@ class BuildOrdersController extends AppController {
 	}
 
 	public function pvp() {
-        $this->set('title_for_layout', 'PvP');
+        $this->set('title_for_layout', 'PvP 3 Stalker Rush');
 	}
 
 	public function db($id) {
