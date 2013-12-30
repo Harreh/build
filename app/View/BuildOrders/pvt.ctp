@@ -14,7 +14,7 @@
                     echo $this->build->item(18, 'Cybernetics Core');
                     echo $this->build->event('Gateway', 'Zealot (To be cancelled)');
                     echo $this->build->item(21, 'Nexus');
-                    echo $this->build->item(23, 'Mothership Core');
+                    echo $this->build->item(21, 'Mothership Core');
                     echo $this->build->resource('minerals', 100, 'Pylon');
                     echo $this->build->resource('minerals', 75, 'Assimilator');
                     echo $this->build->resource('vespene', 50, 'Stalker');
