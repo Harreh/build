@@ -2,7 +2,7 @@
 	<div class='col-md-4'>
 		<div class='row'>
 			<div class='page-header'>
-				<h1>PvT NaNiwa's Gateway expand</h1>
+				<h1><?php echo htmlspecialchars($title_for_layout); ?></h1>
 			</div>
 			<div class='list-group'>
 				<?php
