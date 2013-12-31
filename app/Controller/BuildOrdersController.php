@@ -5,6 +5,7 @@ class BuildOrdersController extends AppController {
 	public $components = array('Session');
 
 	public function index() {
+		$this->set('buildOrders', $this->BuildOrder->find('all'));
 	}
 
 	public function add() {
