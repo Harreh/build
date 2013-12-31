@@ -5,6 +5,20 @@ class BuildHelper extends AppHelper {
 
 	public $race;
 
+	public function line($line) {
+		$output_array = array();
+		if (preg_match("/^(\d+)\s-\s(.+$)/", $line, $output_array)) {
+			return $this->item(intval($output_array[1]), $output_array[2]);
+		}
+		if (preg_match("/^@(\d+)\s(minerals|vespene|gas)\s-\s(.+)$/", $line, $output_array)) {
+			return $this->resource($output_array[2], intval($output_array[1]), $output_array[3]);
+		}
+		if (preg_match("/^@100%\s([\w\s]+)\s-\s(.+)$/", $line, $output_array)) {
+			return $this->event($output_array[1], $output_array[2]);
+		}
+		return $this->note($line);
+	}
+
 	public function event($title, $body) {
 		return "
 			<a class='list-group-item'>
@@ -38,7 +52,7 @@ class BuildHelper extends AppHelper {
 			throw new CakeException('Incorrect input types for BuildHelper/resource');
 		}
 
-		if ($resource == 'vespene') {
+		if ($resource == 'vespene' || $resource == 'gas') {
 			$resource = 'vespene-'.$this->race;
 		} else if ($resource != 'minerals') {
 			throw new CakeException('Incorrect input values for BuildHelper/resource');
