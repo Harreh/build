@@ -9,6 +9,9 @@
 				$this->build->race = $buildOrder['BuildOrder']['race'];
 				$buildOrder['BuildOrder']['build'] = explode("\n", $buildOrder['BuildOrder']['build']);
 				foreach ($buildOrder['BuildOrder']['build'] as $line) {
+					if (empty($line)) {
+						continue;
+					}
 					echo $this->build->line($line);
 				}
 				?>
