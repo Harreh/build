@@ -29,12 +29,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-	<style>
-		body {
-		  position: relative; /* For scrollyspy */
-		  padding-top: 50px; /* Account for fixed navbar */
-		}
-	</style>
 	<?php
 		echo $this->Html->meta('icon');
 
