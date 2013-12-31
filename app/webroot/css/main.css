@@ -1,5 +1,23 @@
 @charset "utf-8";
 
+body {
+    position: relative; /* For scrollyspy */
+    padding-top: 50px; /* Account for fixed navbar */
+}
+
 .badge {
 	float: none!important;
+}
+
+.affix-top {
+	margin-top: 50px;
+}
+.affix {
+	margin-top: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+    .affix {
+      position: relative;
+    }
 }
