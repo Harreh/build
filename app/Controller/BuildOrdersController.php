@@ -2,7 +2,6 @@
 class BuildOrdersController extends AppController {
 
 	public $helpers = array('form', 'html', 'build');
-	public $components = array('Session', 'Paginator');
 
 	public function index() {
 		$this->set('buildOrders', $this->Paginator->paginate());
@@ -22,22 +21,5 @@ class BuildOrdersController extends AppController {
 		$this->BuildOrder->id = $id;
 		$this->set('title_for_layout',  $this->BuildOrder->field('title'));
 		$this->set('buildOrder', $this->BuildOrder->findById($id));
-	}
-
-	public function pvt() {
-        $this->set('title_for_layout', 'PvT NaNiwa\'s Gateway expand');
-
-	}
-
-	public function pvz() {
-        $this->set('title_for_layout', 'PvZ HerO’s Aggressive Stargate Build');
-	}
-
-	public function pvp() {
-        $this->set('title_for_layout', 'PvP 3 Stalker Rush');
-	}
-
-	public function db($id) {
-		$this->set('buildOrder', $this->BuildOrder->find('first', $id));
 	}
 }

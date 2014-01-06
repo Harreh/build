@@ -72,5 +72,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+	<?php echo $this->Html->script('main'); ?>
 </body>
 </html>
