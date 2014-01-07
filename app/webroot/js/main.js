@@ -4,7 +4,6 @@ function get_build() {
 	text = $('#build').val();
 
 	lines = text.split("\n");
-	console.log(lines);
 	html = "";
 	lines.forEach(function(elem) {
 		html += match_line(elem);
@@ -18,7 +17,7 @@ function match_line(line) {
 		return item(match[1], match[2]);
 	}
 
-	match = line.match(/^@(\d+)\s(minerals|vespene|gas)\s-\s(.+)$/);
+	match = line.match(/^@(\d+)\s(minerals|vespene|gas)\s-\s(.+$)/);
 	if (match) {
 		return resource_item(match[2], match[1], match[3]);
 	}
@@ -46,7 +45,7 @@ function resource_item(resource, amount, name) {
 }
 
 function event_item(title, body) {
-	return "<a class='list-group-item'><span class='badge'>&nbsp;" + escapeHtml(title) + "</span><span style='margin-left: 10px'>" + escapeHtml($body) + "</span></a>";
+	return "<a class='list-group-item'><span class='badge'>&nbsp;" + escapeHtml(title) + "</span><span style='margin-left: 10px'>" + escapeHtml(body) + "</span></a>";
 }
 
 function escapeHtml(text) {
