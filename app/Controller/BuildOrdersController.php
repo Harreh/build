@@ -2,6 +2,7 @@
 class BuildOrdersController extends AppController {
 
 	public $helpers = array('form', 'html', 'build');
+	public $components = array('Session', 'Paginator');
 
 	public function index() {
 		$this->set('buildOrders', $this->Paginator->paginate());
