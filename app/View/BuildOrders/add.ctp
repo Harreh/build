@@ -1,5 +1,12 @@
 <div class='row'>
-	<div class='col-md-6'>
+	<div class='col-md-3'>
+		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
+			<ul class="nav">
+				<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "index"));?>">View Builds</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='col-md-5'>
 		<div class='page-header'>
 			<h1>Create New Build Order</h1>
 		</div>
@@ -32,9 +39,9 @@
 		<?php echo $this->form->end(); ?>
 	</div>
 
-	<div class='col-md-6'>
+	<div class='col-md-4'>
 		<div class='page-header'><h1>Preview</h1></div>
-		<div id='build-preview'>
+		<div id='build-preview' class='list-group'>
 		</div>
 	</div>
 </div>
