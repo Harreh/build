@@ -93,6 +93,8 @@ Configure::write('Dispatcher.filters', array(
 	'CacheDispatcher'
 ));
 
+Configure::write('App.defaultEmail', 'noreply@localhost.com');
+
 /**
  * Configures default file logging options
  */
@@ -109,3 +111,6 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load('DebugKit');
+CakePlugin::load('Search');
+CakePlugin::load('Utils');
+CakePlugin::load('Users', array('bootstrap' => true, 'routes' => true, 'ignoreMissing' => true));

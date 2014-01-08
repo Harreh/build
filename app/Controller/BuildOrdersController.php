@@ -2,14 +2,27 @@
 class BuildOrdersController extends AppController {
 
 	public $helpers = array('form', 'html', 'build');
-	public $components = array('Session', 'Paginator');
+
+	public $components = array(
+    	'Auth',
+		'Session',
+		'Cookie',
+		'Paginator',
+		'Search.Prg',
+		'Users.RememberMe',
+	);
+
+	public function beforeFilter() {
+		$this->Auth->allow('index', 'view');
+	}
 
 	public function index() {
 		$this->set('buildOrders', $this->Paginator->paginate());
 	}
-
+	
 	public function add() {
 		if ($this->request->is('post')) {
+			$this->request->data['BuidOrder']['user_id'] = $this->Auth->user('id');
 			if ($this->BuildOrder->save($this->request->data)) {
 		    	$this->Session->setFlash(__('Your build has been saved'), 'flash_notification', array('class' => 'alert-success'));
 			    return $this->redirect(array('action' => 'view', $this->BuildOrder->id));
@@ -18,7 +31,7 @@ class BuildOrdersController extends AppController {
 		}
 	}
 
-	public function view($id) {
+	public function view($id = null) {
 		if (!$id) {
 		    throw new NotFoundException(__('Invalid build.'));
 		}

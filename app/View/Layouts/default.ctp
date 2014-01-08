@@ -30,12 +30,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "index"));?>" class="navbar-brand">SCII Build Order project</a>
+					<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "index")); ?>" class="navbar-brand">SCII Build Order project</a>
 				</div>
 				<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation" style="height: 1px;">
 				    <ul class="nav navbar-nav navbar-right">
 				      <li>
-				        <a href="about">About</a>
+				        <a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "about")); ?>">About</a>
 				      </li>
 				    </ul>
 			    </nav>
