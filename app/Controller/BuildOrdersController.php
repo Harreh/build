@@ -47,6 +47,7 @@ class BuildOrdersController extends AppController {
 		$this->BuildOrder->id = $id;
 		$this->set('title_for_layout',  $buildOrder['BuildOrder']['title']);
 		$this->set('buildOrder', $buildOrder);
+		$this->set('isOwned', $this->BuildOrder->isOwnedBy($buildOrder['BuildOrder']['id'], $this->Auth->user('id')));
 	}
 
 	public function edit($id = null) {
@@ -57,6 +58,11 @@ class BuildOrdersController extends AppController {
 		$buildOrder = $this->BuildOrder->findById($id);
 		if (!$buildOrder) {
 		    throw new NotFoundException(__('Invalid build.'));
+		}
+
+		if (!$this->BuildOrder->isOwnedBy($id, $this->Auth->user('id'))) {
+			$this->Session->setFlash(__('You cannot modify that build.'), 'flash_notification', array('class' => 'alert-danger'));
+			return $this->redirect(array('action' => 'index'));
 		}
 
 		$this->BuildOrder->id = $id;
@@ -79,6 +85,11 @@ class BuildOrdersController extends AppController {
 
 		if (!$this->BuildOrder->exists()) {
 		    throw new NotFoundException(__('Invalid build.'));
+		}
+
+		if (!$this->BuildOrder->isOwnedBy($id, $this->Auth->user('id'))) {
+			$this->Session->setFlash(__('Unable to delete build.'), 'flash_notification', array('class' => 'alert-warning'));
+			return $this->redirect(array('action' => 'saved'));
 		}
 
 		if ($this->BuildOrder->delete()) {
