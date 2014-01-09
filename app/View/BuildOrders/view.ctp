@@ -3,7 +3,9 @@
 		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
 			<ul class="nav">
 				<?php echo $this->element('nav'); ?>
-				<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit Build</a></li>
+				<?php if ($isOwned) : ?>
+					<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit Build</a></li>
+				<?php endif; ?>
 			</ul>
 		</div>
 	</div>
