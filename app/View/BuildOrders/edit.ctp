@@ -2,8 +2,8 @@
 	<div class='col-md-3'>
 		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
 			<ul class="nav">
-				<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "index"));?>">View Builds</a></li>
-				<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "add"));?>">Create new build</a></li>
+				<?php echo $this->element('nav'); ?>
+				<li class='active'><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit Build</a></li>
 			</ul>
 		</div>
 	</div>

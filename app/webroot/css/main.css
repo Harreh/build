@@ -21,3 +21,7 @@ body {
       position: relative;
     }
 }
+
+li.active {
+	font-weight: bold;
+}

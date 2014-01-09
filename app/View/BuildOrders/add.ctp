@@ -2,7 +2,7 @@
 	<div class='col-md-3'>
 		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
 			<ul class="nav">
-				<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "index"));?>">View Builds</a></li>
+				<?php echo $this->element('nav'); ?>
 			</ul>
 		</div>
 	</div>
