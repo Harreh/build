@@ -22,13 +22,17 @@ class BuildOrdersController extends AppController {
 	
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->request->data['BuidOrder']['user_id'] = $this->Auth->user('id');
+			$this->request->data['user_id'] = $this->Auth->user('id');
 			if ($this->BuildOrder->save($this->request->data)) {
 		    	$this->Session->setFlash(__('Your build has been saved'), 'flash_notification', array('class' => 'alert-success'));
 			    return $this->redirect(array('action' => 'view', $this->BuildOrder->id));
 			}
 		    $this->Session->setFlash(__('Unable to save your build.'), 'flash_notification', array('class' => 'alert-warning'));
 		}
+	}
+
+	public function saved() {
+		$this->set('buildOrders', $this->Paginator->paginate(array('user_id' => $this->Auth->user('id'))));
 	}
 
 	public function view($id = null) {
@@ -64,5 +68,25 @@ class BuildOrdersController extends AppController {
 			$this->Session->setFlash(__('Unable to save your changes.'), 'flash_notification', array('class' => 'alert-warning'));
 		}
 		$this->set('buildOrder', $this->BuildOrder->findById($id));
+	}
+
+	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+		    throw new MethodNotAllowedException();
+		}
+
+		$this->BuildOrder->id = $id;
+
+		if (!$this->BuildOrder->exists()) {
+		    throw new NotFoundException(__('Invalid build.'));
+		}
+
+		if ($this->BuildOrder->delete()) {
+			$this->Session->setFlash(__('Build deleted.'), 'flash_notification', array('class' => 'alert-success'));
+			return $this->redirect(array('action' => 'saved'));
+		}
+		$this->Session->setFlash(__('Unable to delete build.'), 'flash_notifcation', array('class' => 'alert-warning'));
+
+		return $this->redirect(array('action' => 'saved'));
 	}
 }
