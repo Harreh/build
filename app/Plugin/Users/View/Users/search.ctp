@@ -28,7 +28,7 @@
 	));
 	?></p>
 
-	<table cellpadding="0" cellspacing="0">
+	<table class='table'>
 	<tr>
 		<th><?php echo $this->Paginator->sort('username'); ?></th>
 		<th><?php echo $this->Paginator->sort('created'); ?></th>
