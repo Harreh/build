@@ -30,3 +30,7 @@ body {
 	font-family: consolas;
 	font-size: 15px;
 }
+
+textarea.form-control {
+	resize: vertical;
+}
