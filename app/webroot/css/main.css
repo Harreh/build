@@ -22,6 +22,11 @@ body {
     }
 }
 
-li.active {
+.active {
 	font-weight: bold;
+}
+
+.build-input {
+	font-family: consolas;
+	font-size: 15px;
 }

@@ -30,7 +30,7 @@
 			<div class='form-group'>
 				<label for="build" class="col-sm-2 control-label">Build</label>
 				<div class="col-sm-10">
-					<textarea id='build' name='build' class="form-control" rows='20' oninput='get_build()'></textarea>
+					<textarea id='build' name='build' class="form-control build-input" rows='20' oninput='get_build()'></textarea>
 				</div>
 			</div>
 			<div class='form-group'>
