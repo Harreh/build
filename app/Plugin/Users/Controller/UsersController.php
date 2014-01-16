@@ -241,16 +241,6 @@ class UsersController extends UsersAppController {
 	}
 
 /**
- * The homepage of a users giving him an overview about everything
- *
- * @return void
- */
-	public function dashboard() {
-		$user = $this->{$this->modelClass}->read(null, $this->Auth->user('id'));
-		$this->set('user', $user);
-	}
-
-/**
  * Shows a users profile
  *
  * @param string $slug User Slug
@@ -260,7 +250,7 @@ class UsersController extends UsersAppController {
 		try {
 			$this->set('user', $this->{$this->modelClass}->view($slug));
 		} catch (Exception $e) {
-			$this->Session->setFlash($e->getMessage());
+			$this->Session->setFlash($e->getMessage(), 'flash_notification', array('class' => 'alert-danger'));
 			$this->redirect('/');
 		}
 	}
@@ -325,8 +315,8 @@ class UsersController extends UsersAppController {
 			$this->request->data[$this->modelClass]['email_verified'] = true;
 
 			if ($this->{$this->modelClass}->add($this->request->data)) {
-				$this->Session->setFlash(__d('users', 'The User has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__d('users', 'The User has been saved'), 'flash_notification', array('class' => 'alert-success'));
+				return $this->redirect(array('action' => 'admin_index'));
 			}
 		}
 		$this->set('roles', Configure::read('Users.roles'));
@@ -342,13 +332,13 @@ class UsersController extends UsersAppController {
 		try {
 			$result = $this->{$this->modelClass}->edit($userId, $this->request->data);
 			if ($result === true) {
-				$this->Session->setFlash(__d('users', 'User saved'));
+				$this->Session->setFlash(__d('users', 'User saved'), 'flash_notification', array('class' => 'alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->request->data = $result;
 			}
 		} catch (OutOfBoundsException $e) {
-			$this->Session->setFlash($e->getMessage());
+			$this->Session->setFlash($e->getMessage(), 'flash_notification', array('class' => 'alert-danger'));
 			$this->redirect(array('action' => 'index'));
 		}
 
@@ -366,12 +356,12 @@ class UsersController extends UsersAppController {
  */
 	public function admin_delete($userId = null) {
 		if ($this->{$this->modelClass}->delete($userId)) {
-			$this->Session->setFlash(__d('users', 'User deleted'));
+			$this->Session->setFlash(__d('users', 'User deleted'), 'flash_notification', array('class' => 'alert-success'));
 		} else {
-			$this->Session->setFlash(__d('users', 'Invalid User'));
+			$this->Session->setFlash(__d('users', 'Invalid User'), 'flash_notification', array('class' => 'alert-warning'));
 		}
 
-		$this->redirect(array('action' => 'index'));
+		$this->redirect(array('action' => 'admin_index'));
 	}
 
 /**
@@ -390,7 +380,7 @@ class UsersController extends UsersAppController {
  */
 	public function add() {
 		if ($this->Auth->user()) {
-			$this->Session->setFlash(__d('users', 'You are already registered and logged in!'));
+			$this->Session->setFlash(__d('users', 'You are already registered and logged in!'), 'flash_notification', array('class' => 'alert-info'));
 			$this->redirect('/');
 		}
 
@@ -410,12 +400,12 @@ class UsersController extends UsersAppController {
 				}
 
 				$this->_sendVerificationEmail($this->{$this->modelClass}->data);
-				$this->Session->setFlash(__d('users', 'Your account has been created. You should receive an e-mail shortly to authenticate your account. Once validated you will be able to login.'));
+				$this->Session->setFlash(__d('users', 'Your account has been created. You should receive an e-mail shortly to authenticate your account. Once validated you will be able to login.'), 'flash_notification', array('class' => 'alert-info'));
 				$this->redirect(array('action' => 'login'));
 			} else {
 				unset($this->request->data[$this->modelClass]['password']);
 				unset($this->request->data[$this->modelClass]['temppassword']);
-				$this->Session->setFlash(__d('users', 'Your account could not be created. Please, try again.'), 'default', array('class' => 'message warning'));
+				$this->Session->setFlash(__d('users', 'Your account could not be created. Please, try again.'), 'flash_notification', array('class' => 'alert-warning'));
 			}
 		}
 	}
@@ -459,7 +449,7 @@ class UsersController extends UsersAppController {
 				if ($this->here == $this->Auth->loginRedirect) {
 					$this->Auth->loginRedirect = '/';
 				}
-				$this->Session->setFlash(sprintf(__d('users', '%s you have successfully logged in'), $this->Auth->user('username')));
+				$this->Session->setFlash(sprintf(__d('users', '%s you have successfully logged in'), $this->Auth->user('username')), 'flash_notification', array('class' => 'alert-success'));
 				if (!empty($this->request->data)) {
 					$data = $this->request->data[$this->modelClass];
 					if (empty($this->request->data[$this->modelClass]['remember_me'])) {
@@ -546,7 +536,7 @@ class UsersController extends UsersAppController {
 		$this->Cookie->destroy();
 		}
 		$this->RememberMe->destroyCookie();
-		$this->Session->setFlash(sprintf(__d('users', '%s you have successfully logged out'), $user[$this->{$this->modelClass}->displayField]));
+		$this->Session->setFlash(sprintf(__d('users', '%s you have successfully logged out'), $user[$this->{$this->modelClass}->displayField]), 'flash_notification', array('class' => 'alert-success'));
 		$this->redirect($this->Auth->logout());
 	}
 
@@ -560,13 +550,13 @@ class UsersController extends UsersAppController {
 			try {
 				if ($this->{$this->modelClass}->checkEmailVerification($this->request->data)) {
 					$this->_sendVerificationEmail($this->{$this->modelClass}->data);
-					$this->Session->setFlash(__d('users', 'The email was resent. Please check your inbox.'));
+					$this->Session->setFlash(__d('users', 'The email was resent. Please check your inbox.'), 'flash_notification', array('class' => 'alert-success'));
 					$this->redirect('login');
 				} else {
-					$this->Session->setFlash(__d('users', 'The email could not be sent. Please check errors.'));
+					$this->Session->setFlash(__d('users', 'The email could not be sent. Please check errors.'), 'flash_notification', array('class' => 'alert-warning'));
 				}
 			} catch (Exception $e) {
-				$this->Session->setFlash($e->getMessage());
+				$this->Session->setFlash($e->getMessage(), 'flash_notification', array('class' => 'alert-danger'));
 			}
 		}
 	}
@@ -586,10 +576,10 @@ class UsersController extends UsersAppController {
 
 		try {
 			$this->{$this->modelClass}->verifyEmail($token);
-			$this->Session->setFlash(__d('users', 'Your e-mail has been validated!'));
+			$this->Session->setFlash(__d('users', 'Your e-mail has been validated!'), 'flash_notification', array('class' => 'alert-success'));
 			return $this->redirect(array('action' => 'login'));
 		} catch (RuntimeException $e) {
-			$this->Session->setFlash($e->getMessage());
+			$this->Session->setFlash($e->getMessage(), 'flash_notification', array('class' => 'alert-danger'));
 			return $this->redirect('/');
 		}
 	}
@@ -609,13 +599,13 @@ class UsersController extends UsersAppController {
 		$data = $this->{$this->modelClass}->verifyEmail($token);
 
 		if (!$data) {
-			$this->Session->setFlash(__d('users', 'The url you accessed is not longer valid'));
+			$this->Session->setFlash(__d('users', 'The url you accessed is not longer valid'), 'flash_notification', array('class' => 'alert-warning'));
 			return $this->redirect('/');
 		}
 
 		if ($this->{$this->modelClass}->save($data, array('validate' => false))) {
 			$this->_sendNewPassword($data);
-			$this->Session->setFlash(__d('users', 'Your password was sent to your registered email account'));
+			$this->Session->setFlash(__d('users', 'Your password was sent to your registered email account'), 'flash_notification', array('class' => 'alert-info'));
 			$this->redirect(array('action' => 'login'));
 		}
 
@@ -652,7 +642,7 @@ class UsersController extends UsersAppController {
 		if ($this->request->is('post')) {
 			$this->request->data[$this->modelClass]['id'] = $this->Auth->user('id');
 			if ($this->{$this->modelClass}->changePassword($this->request->data)) {
-				$this->Session->setFlash(__d('users', 'Password changed.'));
+				$this->Session->setFlash(__d('users', 'Password changed.'), 'flash_notification', array('class' => 'alert-success'));
 				// we don't want to keep the cookie with the old password around
 				$this->RememberMe->destroyCookie();
 				$this->redirect('/');
