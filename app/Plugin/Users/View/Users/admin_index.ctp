@@ -14,7 +14,7 @@
 
 	<h3><?php echo __d('users', 'Filter'); ?></h3>
 	<?php 
-	echo $this->Form->create($model, array('action' => 'index'));
+	echo $this->Form->create($model, array('action' => 'search'));
 		echo $this->Form->input('username', array('label' => __d('users', 'Username')));
 		echo $this->Form->input('email', array('label' => __d('users', 'Email')));
 	echo $this->Form->end(__d('users', 'Search'));
@@ -22,7 +22,7 @@
 
 	<?php echo $this->element('Users.paging'); ?>
 	<?php echo $this->element('Users.pagination'); ?>
-	<table cellpadding="0" cellspacing="0">
+	<table class='table'>
 		<tr>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
@@ -58,7 +58,7 @@
 				<td class="actions">
 					<?php echo $this->Html->link(__d('users', 'View'), array('action'=>'view', $user[$model]['id'])); ?>
 					<?php echo $this->Html->link(__d('users', 'Edit'), array('action'=>'edit', $user[$model]['id'])); ?>
-					<?php echo $this->Html->link(__d('users', 'Delete'), array('action'=>'delete', $user[$model]['id']), null, sprintf(__d('users', 'Are you sure you want to delete # %s?'), $user[$model]['id'])); ?>
+					<?php echo $this->Html->link(__d('users', 'Delete'), array('action'=>'admin_delete', $user[$model]['id']), null, sprintf(__d('users', 'Are you sure you want to delete # %s?'), $user[$model]['id'])); ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>
