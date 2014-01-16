@@ -16,6 +16,9 @@ class BuildHelper extends AppHelper {
 		if (preg_match("/^@100%\s([\w\s]+)\s-\s(.+)$/", $line, $output_array)) {
 			return $this->event($output_array[1], $output_array[2]);
 		}
+		if (preg_match("/^@(\d+:\d{2})\s-\s(.+)$/", $line, $output_array)) {
+			return $this->event($output_array[1], $output_array[2]);
+		}
 		return $this->note($line);
 	}
 

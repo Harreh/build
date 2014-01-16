@@ -27,6 +27,11 @@ function match_line(line) {
 		return event_item(match[1], match[2]);
 	}
 
+	match = line.match(/^@(\d+:\d{2})\s-\s(.+)$/);
+	if (match) {
+		return event_item(match[1], match[2]);
+	}
+
 	return "<a class='list-group-item'>" + escapeHtml(line) + "</a>";
 }
 
