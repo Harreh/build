@@ -25,7 +25,7 @@
 			<div class='form-group'>
 				<label for='race' class='col-sm-2 control-label'>Race</label>
 				<div class='col-sm-10'>
-					<select id='race' name='race' class='form-control'>
+					<select id='race' name='race' class='form-control' onchange='get_build();'>
 						<option value='terran' <?php echo $buildOrder['BuildOrder']['race'] == 'terran' ? 'selected' : ''; ?>>Terran</option>
 						<option value='protoss' <?php echo $buildOrder['BuildOrder']['race'] == 'protoss' ? 'selected' : ''; ?>>Protoss</option>
 						<option value='zerg' <?php echo $buildOrder['BuildOrder']['race'] == 'zerg' ? 'selected' : ''; ?>>Zerg</option>

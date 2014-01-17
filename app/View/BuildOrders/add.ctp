@@ -16,7 +16,7 @@
 			<div class='form-group'>
 				<label for='race' class='col-sm-2 control-label'>Race</label>
 				<div class='col-sm-10'>
-					<select id='race' name='race' class='form-control'>
+					<select id='race' name='race' class='form-control' onchange='get_build();'>
 						<option value='terran'>Terran</option>
 						<option value='protoss'>Protoss</option>
 						<option value='zerg'>Zerg</option>
