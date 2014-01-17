@@ -19,10 +19,12 @@
 			</tr>
 			<?php foreach ($favourites as $favourite) : ?>
 				<tr>
-					<td><?php echo h($favourite['BuildOrder']['race']); ?></td>
+					<td><?php echo h(ucfirst($favourite['BuildOrder']['race'])); ?></td>
 					<td><?php echo $this->html->link($favourite['BuildOrder']['title'], array('controller' => 'buildorders', 'action' => 'view', $favourite['BuildOrder']['id'])); ?></td>
 					<td>
-						<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $favourite['BuildOrder']['id'])); ?>">Edit</a>
+						<?php if ($favourite['BuildOrder']['user_id'] == $this->Session->read('Auth.User.id')) :
+							echo $this->html->link('Edit', array('controller' => 'buildorders', 'action' => 'edit', $favourite['BuildOrder']['id']));
+						endif; ?>
 						<?php echo $this->Form->postLink(
 							__('Remove'),
 							array(
