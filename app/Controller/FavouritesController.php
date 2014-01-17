@@ -15,7 +15,12 @@ class FavouritesController extends AppController {
 	);
 	
 	public function index() {
-        $this->set('favourites', $this->Paginator->paginate(array('Favourite.user_id' => $this->Auth->user('id'))));
+        $favourites = $this->Paginator->paginate(array('Favourite.user_id' => $this->Auth->user('id')));
+        if ($favourites) {
+            $this->set('favourites', $favourites);
+        } else {
+            $this->render('empty/index');
+        }
     }
 
     public function add($id = null) {

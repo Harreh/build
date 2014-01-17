@@ -32,7 +32,12 @@ class BuildOrdersController extends AppController {
 	}
 
 	public function saved() {
-		$this->set('buildOrders', $this->Paginator->paginate(array('user_id' => $this->Auth->user('id'))));
+		$buildOrders = $this->Paginator->paginate(array('user_id' => $this->Auth->user('id')));
+		if ($buildOrders) {
+			$this->set('buildOrders', $buildOrders);
+		} else {
+			$this->render('empty/saved');
+		}
 	}
 
 	public function view($id = null) {
