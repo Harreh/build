@@ -5,8 +5,6 @@ Router::connect('/saved', array('controller' => 'buildorders', 'action' => 'save
 Router::connect('/add', array('controller' => 'buildorders', 'action' => 'add'));
 Router::connect('/edit/*', array('controller' => 'buildorders', 'action' => 'edit'));
 Router::connect('/favourites', array('controller' => 'favourites', 'action' => 'index'));
-Router::connect('/login', array('plugin' => 'users', 'controller' => 'users', 'action' => 'login'));
-Router::connect('/logout', array('plugin' => 'users', 'controller' => 'users', 'action' => 'logout'));
 
 CakePlugin::routes();
 
