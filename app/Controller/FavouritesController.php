@@ -1,7 +1,7 @@
 <?php
 class FavouritesController extends AppController {
 
-	public $helpers = array('form', 'html', 'build');
+	public $helpers = array('form', 'html', 'build', 'Session');
 
     public $uses = array('Favourite', 'BuildOrder');
 
