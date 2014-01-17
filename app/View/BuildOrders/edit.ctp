@@ -1,15 +1,14 @@
 <div class='row'>
-
-	<?php
-	$navs = array(
-				array(
-	 				'link' => array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id']),
-	 				'title' => 'Edit Build',
-	 				'active' => true
- 				)
-		 	);
-	echo $this->element('nav', array('navs' => $navs));
-	?>
+	<div class='col-md-3'>
+		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
+			<ul class="nav">
+				<?php echo $this->element('nav'); ?>
+				<li class='active'>
+					<a href='<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id']))?>'>Edit Build</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 
 	<div class='col-md-5'>
 		<div class='page-header'>

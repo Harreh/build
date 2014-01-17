@@ -1,6 +1,11 @@
 <div class='row'>
-
-	<?php echo $this->element('nav'); ?>
+	<div class='col-md-3'>
+		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
+			<ul class="nav">
+				<?php echo $this->element('nav'); ?>
+			</ul>
+		</div>
+	</div>
 
 	<div class='col-md-5'>
 		<div class='page-header'>

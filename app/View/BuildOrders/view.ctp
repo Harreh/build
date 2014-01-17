@@ -1,18 +1,37 @@
 <div class='row'>
-
-	<?php if ($isOwned) : ?>
-		<?php
-		$navs = array(
-					array(
-						'link' => array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id']),
-						'title' => 'Edit Build',
-						'active' => false
-					)
-				);
-		echo $this->element('nav', array('navs' => $navs)); ?>
-	<?php else :
-		echo $this->element('nav'); ?>
-	<?php endif; ?>
+	<div class='col-md-3'>
+		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
+			<ul class="nav">
+				<?php echo $this->element('nav');
+				if ($isOwned) : ?>
+					<li>
+						<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit Build</a>
+					</li>
+				<?php endif; ?>
+				<li>
+					<?php if (isset($favourite)) :
+						echo $this->Form->postlink(
+							__('Remove favourite'),
+							array(
+								'controller' => 'favourites',
+								'action' => 'delete',
+								$favourite['Favourite']['id']
+							)
+						);
+					else:
+						echo $this->Form->postLink(
+							__('Save as favourite'),
+							array(
+								'controller' => 'favourites',
+								'action' => 'add',
+								$buildOrder['BuildOrder']['id']
+							)
+						);
+					endif; ?>
+				</li>
+			</ul>
+		</div>
+	</div>
 
 	<div class='col-md-4'>
 		<div class='page-header'>
