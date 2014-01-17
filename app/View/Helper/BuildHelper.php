@@ -23,7 +23,7 @@ class BuildHelper extends AppHelper {
 	}
 
 	public function event($title, $body) {
-		return "<a class='list-group-item'><span class='badge'>&nbsp;".htmlspecialchars($title)."</span><span style='margin-left: 10px'>".htmlspecialchars($body)."</span></a>";
+		return "<a class='list-group-item'><span class='badge'>&nbsp;".h($title)."</span><span style='margin-left: 10px'>".h($body)."</span></a>";
 	}
 
 	public function item($supply, $name) {
@@ -37,7 +37,7 @@ class BuildHelper extends AppHelper {
 		if (!is_string($note)) {
 			throw new CakeException('Incorrect input type for BuildHelper/note');
 		}
-		return "<a class='list-group-item'>".htmlspecialchars($note)."</a>";
+		return "<a class='list-group-item'>".h($note)."</a>";
 	}
 
 	public function resource($resource, $amount, $name) {

@@ -19,7 +19,7 @@
 			</tr>
 			<?php foreach ($favourites as $favourite) : ?>
 				<tr>
-					<td><?php echo htmlspecialchars($favourite['BuildOrder']['race']); ?></td>
+					<td><?php echo h($favourite['BuildOrder']['race']); ?></td>
 					<td><?php echo $this->html->link($favourite['BuildOrder']['title'], array('controller' => 'buildorders', 'action' => 'view', $favourite['BuildOrder']['id'])); ?></td>
 					<td>
 						<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $favourite['BuildOrder']['id'])); ?>">Edit</a>

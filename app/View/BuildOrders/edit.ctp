@@ -18,7 +18,7 @@
 			<div class='form-group'>
 				<label for='title' class='col-sm-2 control-label'>Title</label>
 				<div class='col-sm-10'>
-					<input id='title' name='title' type='text'class='form-control' value='<?php echo htmlspecialchars($buildOrder['BuildOrder']['title'], ENT_QUOTES, 'UTF-8'); ?>'>
+					<input id='title' name='title' type='text'class='form-control' value='<?php echo h($buildOrder['BuildOrder']['title']); ?>'>
 				</div>
 			</div>
 			<div class='form-group'>
@@ -34,7 +34,7 @@
 			<div class='form-group'>
 				<label for="build" class="col-sm-2 control-label">Build</label>
 				<div class="col-sm-10">
-					<textarea id='build' name='build' class="form-control" rows='20' oninput='get_build()'><?php echo htmlspecialchars($buildOrder['BuildOrder']['build']) ?></textarea>
+					<textarea id='build' name='build' class="form-control" rows='20' oninput='get_build()'><?php echo h($buildOrder['BuildOrder']['build']); ?></textarea>
 				</div>
 			</div>
 			<div class='form-group'>

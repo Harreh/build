@@ -11,7 +11,7 @@
 				<li>
 					<?php if (isset($favourite)) :
 						echo $this->Form->postlink(
-							__('Remove favourite'),
+							__('Remove Favourite'),
 							array(
 								'controller' => 'favourites',
 								'action' => 'delete',
@@ -20,7 +20,7 @@
 						);
 					else:
 						echo $this->Form->postLink(
-							__('Save as favourite'),
+							__('Save as Favourite'),
 							array(
 								'controller' => 'favourites',
 								'action' => 'add',
@@ -35,7 +35,7 @@
 
 	<div class='col-md-4'>
 		<div class='page-header'>
-			<h1><?php echo htmlspecialchars($title_for_layout); ?></h1>
+			<h1><?php echo h($title_for_layout); ?></h1>
 		</div>
 		<div class='list-group'>
 			<?php

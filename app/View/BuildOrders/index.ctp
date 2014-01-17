@@ -18,7 +18,7 @@
 			</tr>
 			<?php foreach ($buildOrders as $buildOrder) : ?>
 				<tr>
-					<td><?php echo htmlspecialchars($buildOrder['BuildOrder']['race']); ?></td>
+					<td><?php echo h($buildOrder['BuildOrder']['race']); ?></td>
 					<td><?php echo $this->html->link($buildOrder['BuildOrder']['title'], array('action' => 'view', $buildOrder['BuildOrder']['id'])); ?></td>
 				</tr>
 			<?php endforeach; ?>
