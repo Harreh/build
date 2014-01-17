@@ -30,7 +30,7 @@ class BuildHelper extends AppHelper {
 		if (!is_int($supply) || !is_string($name)) {
 			throw new CakeException('Incorrect input types for BuildHelper/item');
 		}
-		return "<a class='list-group-item'><span class='badge'><img src='/build/img/".$race."_supply.gif'>&nbsp;$supply</span><span style='margin-left: 10px'>".htmlspecialchars($name)."</span></a>";
+		return "<a class='list-group-item'><span class='badge'><img src='/build/img/".$this->race."_supply.gif'>&nbsp;$supply</span><span style='margin-left: 10px'>".htmlspecialchars($name)."</span></a>";
 	}
 
 	public function note($note) {
