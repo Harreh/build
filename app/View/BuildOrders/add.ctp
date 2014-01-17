@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class='form-group'>
-				<button class="btn btn-primary btn-lg btn-block"  type='submit'>Submit</button>
+				<button class="btn btn-primary btn-lg btn-block" type='submit'>Submit</button>
 			</div>
 		<?php echo $this->form->end(); ?>
 	</div>
