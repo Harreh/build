@@ -1,11 +1,7 @@
 <div class='row'>
-	<div class='col-md-3'>
-		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
-			<ul class="nav">
-				<?php echo $this->element('nav'); ?>
-			</ul>
-		</div>
-	</div>
+
+	<?php echo $this->element('nav'); ?>
+	
 	<div class='col-md-9'>
 		<div class='page-header'>
 			<h1>Your Favourites</h1>

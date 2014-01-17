@@ -1,14 +1,19 @@
 <div class='row'>
-	<div class='col-md-3'>
-		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
-			<ul class="nav">
-				<?php echo $this->element('nav'); ?>
-				<?php if ($isOwned) : ?>
-					<li><a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit Build</a></li>
-				<?php endif; ?>
-			</ul>
-		</div>
-	</div>
+
+	<?php if ($isOwned) : ?>
+		<?php
+		$navs = array(
+					array(
+						'link' => array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id']),
+						'title' => 'Edit Build',
+						'active' => false
+					)
+				);
+		echo $this->element('nav', array('navs' => $navs)); ?>
+	<?php else :
+		echo $this->element('nav'); ?>
+	<?php endif; ?>
+
 	<div class='col-md-4'>
 		<div class='page-header'>
 			<h1><?php echo htmlspecialchars($title_for_layout); ?></h1>
