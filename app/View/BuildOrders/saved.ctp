@@ -18,10 +18,10 @@
 			</tr>
 			<?php foreach ($buildOrders as $buildOrder) : ?>
 				<tr>
-					<td><?php echo h($buildOrder['BuildOrder']['race']); ?></td>
+					<td><?php echo h(ucfirst($buildOrder['BuildOrder']['race'])); ?></td>
 					<td><?php echo $this->html->link($buildOrder['BuildOrder']['title'], array('action' => 'view', $buildOrder['BuildOrder']['id'])); ?></td>
 					<td>
-						<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit</a>
+						<?php echo $this->html->link('Edit', array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>
 						<?php echo $this->Form->postLink(
 							__('Delete'),
 							array(
