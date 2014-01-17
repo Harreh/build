@@ -10,22 +10,22 @@ function get_build() {
 }
 
 function match_line(line) {
-	match = line.match(/^(\d+)\s-\s(.+$)/);
+	match = line.match(/^(\d+)\s-\s(.+$)/i);
 	if (match) {
 		return item(match[1], match[2]);
 	}
 
-	match = line.match(/^@(\d+)\s(minerals|vespene|gas)\s-\s(.+$)/);
+	match = line.match(/^@(\d+)\s(minerals|vespene|gas)\s-\s(.+$)/i);
 	if (match) {
 		return resource_item(match[2], match[1], match[3]);
 	}
 
-	match = line.match(/^@100%\s([\w\s]+)\s-\s(.+)$/);
+	match = line.match(/^@100%\s([\w\s]+)\s-\s(.+)$/i);
 	if (match) {
 		return event_item(match[1], match[2]);
 	}
 
-	match = line.match(/^@(\d+:\d{2})\s-\s(.+)$/);
+	match = line.match(/^@(\d+:\d{2})\s-\s(.+)$/i);
 	if (match) {
 		return event_item(match[1], match[2]);
 	}
@@ -38,10 +38,10 @@ function item(supply, name) {
 }
 
 function resource_item(resource, amount, name) {
-	if (resource == 'gas' || resource == 'vespene') {
+	if (resource.toUpperCase() == 'GAS' || resource == 'VESPENE') {
 		resource = "vespene-" + $('#race').val() + ".gif";
 	}
-	if (resource == 'minerals') {
+	if (resource.toUpperCase() == 'MINERALS') {
 		resource = 'minerals.gif';
 	}
 	return "<a class='list-group-item'><span class='badge'><img src='/build/img/" + resource + "'>&nbsp;" + escapeHtml(amount) + "</span><span style='margin-left: 10px'>" + escapeHtml(name) + "</span></a>";
