@@ -1,7 +1,7 @@
 <?php
 class BuildOrdersController extends AppController {
 
-	public $helpers = array('form', 'html', 'build');
+	public $helpers = array('form', 'html', 'build', 'Session');
 
 	public $components = array(
     	'Auth',
