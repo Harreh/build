@@ -4,17 +4,17 @@ $action = $this->params['action'];
 ?>
 
 <li<?php echo ($controller == 'buildorders' && $action == 'index') ? " class='active'" : '' ; ?>>
-	<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "index"));?>">View Builds</a>
+	<?php echo $this->html->link('View Builds', array("controller" => "buildorders", "action" => "index")); ?>
 </li>
 <li<?php echo ($controller == 'buildorders' && $action == 'saved') ? " class='active'" : '' ; ?>>
-	<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "saved"));?>">Your Builds</a>
+	<?php echo $this->html->link('Your Builds', array("controller" => "buildorders", "action" => "saved")); ?>
 </li>
 <li<?php echo ($controller == 'favourites' && $action == 'index') ? " class='active'" : '' ; ?>>
-	<a href="<?php echo $this->Html->url(array("controller" => "favourites", "action" => "index"));?>">Your Favourites</a>
+	<?php echo $this->html->link('Your Favourites', array("controller" => "favourites", "action" => "index")); ?>
 </li>
 <hr>
 <li<?php echo ($controller == 'buildorders' && $action == 'add') ? " class='active'" : '' ; ?>>
-	<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "add"));?>">Create new build</a>
+	<?php echo $this->html->link('Create new Build', array("controller" => "buildorders", "action" => "add")); ?>
 </li>
 <hr>
 <li>
