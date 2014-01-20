@@ -29,7 +29,7 @@
 						);
 					endif; ?>
 				</li>
-				<?php echo $this->elemet('nav/login'); ?>
+				<?php echo $this->element('nav/login'); ?>
 			</ul>
 		</div>
 	</div>
