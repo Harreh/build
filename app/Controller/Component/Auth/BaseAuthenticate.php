@@ -48,7 +48,7 @@ abstract class BaseAuthenticate {
 		'scope' => array(),
 		'recursive' => 0,
 		'contain' => null,
-		'passwordHasher' => 'Simple'
+		'passwordHasher' => 'Blowfish'
 	);
 
 /**
