@@ -14,14 +14,13 @@
 		<div class='page-header'>
 			<h1><?php echo __d('users', 'Edit User'); ?></h1>
 		</div>
-		<?php echo $this->Form->create($model); ?>
-				<?php
-				echo $this->Form->input('UserDetail.first_name', array('div' => 'form-group', 'class' => 'input-lg form-control', 'placeholder' => 'Enter First Name'));
-				echo $this->Form->input('UserDetail.last_name', array('div' => 'form-group', 'class' => 'input-lg form-control', 'placeholder' => 'Enter Last Name'));
-				echo $this->Form->input('UserDetail.birthday', array('div' => 'form-group', 'class' => 'input-lg form-control', 'placeholder' => 'Enter Birthday'));
-				?>
-				<p><?php echo $this->Html->link(__d('users', 'Change your password'), array('action' => 'change_password')); ?></p>
-			</fieldset>
+		<?php
+		echo $this->Form->create($model);
+		echo $this->Form->input('UserDetail.first_name', array('div' => 'form-group', 'class' => 'input-lg form-control', 'placeholder' => 'Enter First Name'));
+		echo $this->Form->input('UserDetail.last_name', array('div' => 'form-group', 'class' => 'input-lg form-control', 'placeholder' => 'Enter Last Name'));
+		echo $this->Form->input('UserDetail.birthday', array('div' => 'form-group', 'class' => 'input-lg form-control', 'placeholder' => 'Enter Birthday'));
+		?>
+		<p><?php echo $this->Html->link(__d('users', 'Change your password'), array('action' => 'change_password')); ?></p>
 		<?php echo $this->Form->end(array('label' => __d('users', 'Submit'), 'div' => 'form-group', 'class' => 'btn btn-primary')); ?>
 	</div>
 </div>
