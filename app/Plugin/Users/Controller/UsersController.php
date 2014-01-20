@@ -762,15 +762,15 @@ class UsersController extends UsersAppController {
 
 				if ($admin) {
 					$this->Session->setFlash(sprintf(
-						__d('users', '%s has been sent an email with instruction to reset their password.'),
-						$user[$this->modelClass]['email']));
+						__d('users', '%s has been sent an email with instructions to reset their password.'),
+						$user[$this->modelClass]['email']), 'flash_notification', array('class' => 'alert-success'));
 					$this->redirect(array('action' => 'index', 'admin' => true));
 				} else {
-					$this->Session->setFlash(__d('users', 'You should receive an email with further instructions shortly'));
+					$this->Session->setFlash(__d('users', 'You should receive an email with further instructions shortly.'), 'flash_notification', array('class' => 'alert-info'));
 					$this->redirect(array('action' => 'login'));
 				}
 			} else {
-				$this->Session->setFlash(__d('users', 'No user was found with that email.'));
+				$this->Session->setFlash(__d('users', 'No user was found with that email.'), 'flash_notification', array('class' => 'alert-danger'));
 				$this->redirect($this->referer('/'));
 			}
 		}
@@ -800,16 +800,16 @@ class UsersController extends UsersAppController {
 	protected function _resetPassword($token) {
 		$user = $this->{$this->modelClass}->checkPasswordToken($token);
 		if (empty($user)) {
-			$this->Session->setFlash(__d('users', 'Invalid password reset token, try again.'));
+			$this->Session->setFlash(__d('users', 'Invalid password reset token, try again.'), 'flash_notification', array('class' => 'alert-danger'));
 			$this->redirect(array('action' => 'reset_password'));
 		}
 
 		if (!empty($this->request->data) && $this->{$this->modelClass}->resetPassword(Set::merge($user, $this->request->data))) {
 			if ($this->RememberMe->cookieIsSet()) {
-				$this->Session->setFlash(__d('users', 'Password changed.'));
+				$this->Session->setFlash(__d('users', 'Password changed.'), 'flash_notification', array('class' => 'alert-success'));
 				$this->_setCookie();
 			} else {
-				$this->Session->setFlash(__d('users', 'Password changed, you can now login with your new password.'));
+				$this->Session->setFlash(__d('users', 'Password changed, you can now login with your new password.'), 'flash_notification', array('class' => 'alert-success'));
 				$this->redirect($this->Auth->loginAction);
 			}
 		}
