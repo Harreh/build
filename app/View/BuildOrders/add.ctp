@@ -34,10 +34,7 @@
 					<textarea id='build' name='build' class="form-control build-input" rows='20' oninput='get_build()'></textarea>
 				</div>
 			</div>
-			<div class='form-group'>
-				<button class="btn btn-primary btn-lg btn-block" type='submit'>Submit</button>
-			</div>
-		<?php echo $this->form->end(); ?>
+		<?php echo $this->form->end(array('label' => 'Submit', 'div' => 'form-group', 'class' => 'btn btn-primary btn-lg btn-block')); ?>
 	</div>
 
 	<div class='col-md-4'>
