@@ -2,7 +2,10 @@
 	<div class='col-md-3'>
 		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
 			<ul class="nav">
-				<?php echo $this->element('nav'); ?>
+				<?php
+				echo $this->element('nav/nav');
+				echo $this->element('nav/login');
+				?>
 			</ul>
 		</div>
 	</div>

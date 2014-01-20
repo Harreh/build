@@ -2,7 +2,7 @@
 	<div class='col-md-3'>
 		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
 			<ul class="nav">
-				<?php echo $this->element('nav');
+				<?php echo $this->element('nav/nav');
 				if ($isOwned) : ?>
 					<li>
 						<a href="<?php echo $this->Html->url(array("controller" => "buildorders", "action" => "edit", $buildOrder['BuildOrder']['id'])); ?>">Edit Build</a>
@@ -29,6 +29,7 @@
 						);
 					endif; ?>
 				</li>
+				<?php echo $this->elemet('nav/login'); ?>
 			</ul>
 		</div>
 	</div>

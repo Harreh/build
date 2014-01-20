@@ -16,11 +16,3 @@ $action = $this->params['action'];
 <li<?php echo ($controller == 'buildorders' && $action == 'add') ? " class='active'" : '' ; ?>>
 	<?php echo $this->html->link('Create new Build', array("controller" => "buildorders", "action" => "add")); ?>
 </li>
-<hr>
-<li>
-	<?php if (AuthComponent::user('id')) {
-		echo $this->html->link('Logout', array('controller' => '/', 'action' => 'logout'));
-	} else {
-		echo $this->html->link('Login', array('controller' => '/', 'action' => 'login'));
-	} ?>
-</li>
