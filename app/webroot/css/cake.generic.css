@@ -210,18 +210,7 @@ form div.submit {
 	clear: both;
 	margin-top: 10px;
 }
-label {
-	display: block;
-	font-size: 110%;
-	margin-bottom:3px;
-}
-input, textarea {
-	clear: both;
-	font-size: 140%;
-	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
-	padding: 1%;
-	width:98%;
-}
+
 select {
 	clear: both;
 	font-size: 120%;
@@ -254,11 +243,7 @@ input[type=radio] {
 	margin: 0 0 6px 20px;
 	line-height: 26px;
 }
-input[type=submit] {
-	display: inline;
-	font-size: 110%;
-	width: auto;
-}
+
 form .submit input[type=submit] {
 	background:#62af56;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#76BF6B), to(#3B8230));
@@ -410,7 +395,6 @@ p.error em {
 }
 
 /* Buttons and button links */
-input[type=submit],
 .actions ul li a,
 .actions a {
 	font-weight:normal;
