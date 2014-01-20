@@ -1,32 +1,33 @@
-<?php
-/**
- * Copyright 2010 - 2013, Cake Development Corporation (http://cakedc.com)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright Copyright 2010 - 2013, Cake Development Corporation (http://cakedc.com)
- * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-?>
-<div class="users view">
-	<h2><?php echo __d('users', 'User'); ?></h2>
-	<dl><?php $i = 0; $class = ' class="altrow"'; ?>
-		<dt<?php if ($i % 2 == 0) echo $class; ?>><?php echo __d('users', 'Username'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class; ?>>
-			<?php echo $user[$model]['username']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class; ?>><?php echo __d('users', 'Created'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class; ?>>
-			<?php echo $user[$model]['created']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class; ?>><?php echo __d('users', 'Modified'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class; ?>>
-			<?php echo $user[$model]['modified']; ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div class="row">
+	<div class='col-md-3'>
+		<div data-spy="affix" data-offset-top="0" class="hidden-print affix-top" role="complementary">
+			<ul class="nav">
+				<?php echo $this->element('nav/nav'); ?>
+				<?php echo $this->element('nav/login'); ?>
+				<li><?php echo $this->Html->link(__d('users', 'My Account'), array('action' => 'edit')); ?></li>
+				<li><?php echo $this->Html->link(__d('users', 'Change password'), array('action' => 'change_password')); ?></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class='col-md-9'>
+		<h2><?php echo __d('users', 'User'); ?></h2>
+		<dl>
+			<dt><?php echo __d('users', 'Username'); ?></dt>
+			<dd>
+				<?php echo $user[$model]['username']; ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __d('users', 'Created'); ?></dt>
+			<dd>
+				<?php echo $user[$model]['created']; ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __d('users', 'Modified'); ?></dt>
+			<dd>
+				<?php echo $user[$model]['modified']; ?>
+				&nbsp;
+			</dd>
+		</dl>
+	</div>
 </div>
-<?php echo $this->element('Users.Users/admin_sidebar'); ?>
