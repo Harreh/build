@@ -45,7 +45,7 @@ class BuildHelper extends AppHelper {
 			throw new CakeException('Incorrect input types for BuildHelper/resource');
 		}
 
-		if (strtoupper($resource) == 'VESPENE' || $resource == 'GAS') {
+		if (strtoupper($resource) == 'VESPENE' || strtoupper($resource) == 'GAS') {
 			$resource = 'vespene-'.$this->race;
 		} else if (strtoupper($resource) == 'MINERALS') {
 			$resource = 'minerals';
