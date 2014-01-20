@@ -18,16 +18,24 @@
 				'action' => 'login',
 				'id' => 'LoginForm'));
 			echo $this->Form->input('email', array(
-				'label' => __d('users', 'Email')));
+				'label' => __d('users', 'Email'),
+				'div' => 'form-group',
+				'placeholder' => 'Enter Email',
+				'class' => 'input-lg form-control'
+				)
+			);
 			echo $this->Form->input('password',  array(
-				'label' => __d('users', 'Password')));
+				'label' => __d('users', 'Password'),
+				'div' => 'form-group',
+				'placeholder' => 'Enter Password',
+				'class' => 'input-lg form-control')
+			);
 
-			echo '<p>' . $this->Form->input('remember_me', array('type' => 'checkbox', 'label' =>  __d('users', 'Remember Me'))) . '</p>';
-			echo '<p>' . $this->Html->link(__d('users', 'I forgot my password'), array('action' => 'reset_password')) . '</p>';
+			echo $this->Form->input('remember_me', array('type' => 'checkbox', 'label' =>  __d('users', 'Remember Me')));
+			echo $this->Html->link(__d('users', 'I forgot my password'), array('action' => 'reset_password'));
 
-			echo $this->Form->hidden('User.return_to', array(
-				'value' => $return_to));
-			echo $this->Form->end(__d('users', 'Submit'));
+			echo $this->Form->hidden('User.return_to', array('value' => $return_to));
+			echo $this->Form->end(array('label' => __d('users', 'Submit'), 'div' => 'form-group', 'class' => 'btn btn-primary'));
 		?>
 	</fieldset>
 </div>
