@@ -32,18 +32,20 @@
 				<th><?php echo $this->Paginator->sort('created'); ?></th>
 				<th><?php echo __d('users', 'Actions'); ?></th>
 			</tr>
-			<tr>
-				<td><?php echo $user[$model]['username']; ?></td>
-				<td><?php echo $user[$model]['email']; ?></td>
-				<td><?php echo $user[$model]['email_verified'] == 1 ? __d('users', 'Yes') : __d('users', 'No'); ?></td>
-				<td><?php echo $user[$model]['active'] == 1 ? __d('users', 'Yes') : __d('users', 'No'); ?></td>
-				<td><?php echo $user[$model]['created']; ?></td>
-				<td>
-					<?php echo $this->Html->link(__d('users', 'View'), array('action'=>'view', $user[$model]['id'])); ?>
-					<?php echo $this->Html->link(__d('users', 'Edit'), array('action'=>'edit', $user[$model]['id'])); ?>
-					<?php echo $this->Html->link(__d('users', 'Delete'), array('action'=>'admin_delete', $user[$model]['id']), null, sprintf(__d('users', 'Are you sure you want to delete # %s?'), $user[$model]['id'])); ?>
-				</td>
-			</tr>
+			<?php foreach ($users as $user) : ?>
+				<tr>
+					<td><?php echo $user[$model]['username']; ?></td>
+					<td><?php echo $user[$model]['email']; ?></td>
+					<td><?php echo $user[$model]['email_verified'] == 1 ? __d('users', 'Yes') : __d('users', 'No'); ?></td>
+					<td><?php echo $user[$model]['active'] == 1 ? __d('users', 'Yes') : __d('users', 'No'); ?></td>
+					<td><?php echo $user[$model]['created']; ?></td>
+					<td>
+						<?php echo $this->Html->link(__d('users', 'View'), array('action'=>'view', $user[$model]['id'])); ?>
+						<?php echo $this->Html->link(__d('users', 'Edit'), array('action'=>'edit', $user[$model]['id'])); ?>
+						<?php echo $this->Html->link(__d('users', 'Delete'), array('action'=>'admin_delete', $user[$model]['id']), null, sprintf(__d('users', 'Are you sure you want to delete # %s?'), $user[$model]['id'])); ?>
+					</td>
+				</tr>
+			<?php endforeach; ?>
 		</table>
 		<?php echo $this->element('Users.pagination'); ?>
 	</div>
