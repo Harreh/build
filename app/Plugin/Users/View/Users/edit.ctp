@@ -4,7 +4,6 @@
 			<ul class="nav">
 				<?php echo $this->element('nav/nav'); ?>
 				<?php echo $this->element('nav/login'); ?>
-				<li><?php echo $this->Html->link(__d('users', 'My Account'), array('action' => 'edit')); ?></li>
 				<li><?php echo $this->Html->link(__d('users', 'Change password'), array('action' => 'change_password')); ?></li>
 			</ul>
 		</div>
