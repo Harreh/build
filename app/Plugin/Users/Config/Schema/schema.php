@@ -15,7 +15,7 @@
  * @license   MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class usersSchema extends CakeSchema {
-	var $name = 'users';
+	public $name = 'users';
 
 	function before($event = array()) {
 		return true;
@@ -35,7 +35,11 @@ class usersSchema extends CakeSchema {
 		'label' => array('type' => 'string', 'null' => false, 'length' => 128),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'UNIQUE_PROFILE_PROPERTY' => array('column' => array('field', 'user_id'), 'unique' => 1))
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1),
+			'UNIQUE_PROFILE_PROPERTY' => array('column' => array('field', 'user_id'),'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_unicode_ci', 'engine' => 'InnoDB')
 	);
 	var $users = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
@@ -55,6 +59,11 @@ class usersSchema extends CakeSchema {
 		'role' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'BY_USERNAME' => array('column' => array('username'), 'unique' => 0), 'BY_EMAIL' => array('column' => array('email'), 'unique' => 0))
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1),
+			'BY_USERNAME' => array('column' => array('username'), 'unique' => 0),
+			'BY_EMAIL' => array('column' => array('email'), 'unique' => 0)
+		),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_unicode_ci', 'engine' => 'InnoDB')
 	);
 }
