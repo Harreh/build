@@ -21,6 +21,7 @@
 </head>
 <body>
 	<div class='container'>
+	<?php echo $this->Session->flash('auth', array('class' => 'alert-info', 'element' => 'flash_notification')); ?>
 		<header class='navbar navbar-inverse navbar-fixed-top' role='banner'>
 			<div class="container">
 				<div class='navbar-header'>
