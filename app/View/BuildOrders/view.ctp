@@ -38,17 +38,35 @@
 		<div class='page-header'>
 			<h1><?php echo h($title_for_layout); ?></h1>
 		</div>
-		<div class='list-group'>
-			<?php
-			$this->build->race = $buildOrder['BuildOrder']['race'];
-			$buildOrder['BuildOrder']['build'] = explode("\n", $buildOrder['BuildOrder']['build']);
-			foreach ($buildOrder['BuildOrder']['build'] as $line) {
-				if (empty($line)) {
-					continue;
-				}
-				echo $this->build->line($line);
-			}
-			?>
+		<div class='collapse-group'>
+			<div class='in collapse collapseable'>
+				<div class='list-group'>
+					<?php
+					$this->build->race = $buildOrder['BuildOrder']['race'];
+					$buildOrder['BuildOrder']['build'] = explode("\n", $buildOrder['BuildOrder']['build']);
+					foreach ($buildOrder['BuildOrder']['build'] as $line) {
+						if (empty($line)) {
+							continue;
+						}
+						echo $this->build->line($line);
+					}
+					?>
+				</div>
+			</div>
+			<div class='collapse collapseable'>
+				<pre><?php
+					$lines = '';
+					foreach ($buildOrder['BuildOrder']['build'] as $line) {
+						if (empty($line)) {
+							continue;
+						}
+						$lines .= $line."\n";
+					}
+
+					$lines = rtrim($lines, "\n");
+					echo $lines; ?></pre>
+			</div>
+			<button class='btn btn-default' data-toggle="collapse" data-target=".collapseable">Toggle View</button>
 		</div>
 	</div>
 </div>
