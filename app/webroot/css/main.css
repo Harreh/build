@@ -5,6 +5,11 @@ body {
     padding-top: 50px; /* Account for fixed navbar */
 }
 
+pre {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
 .badge {
 	float: none!important;
 }
