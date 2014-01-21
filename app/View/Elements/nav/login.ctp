@@ -1,8 +1,8 @@
 <hr>
 <li>
 	<?php if (AuthComponent::user('id')) {
-		echo $this->html->link('Logout', array('controller' => '/', 'action' => 'logout'));
+		echo $this->html->link('Logout', '/logout');
 	} else {
-		echo $this->html->link('Login', array('controller' => '/', 'action' => 'login'));
+		echo $this->html->link('Login', '/');
 	} ?>
 </li>
