@@ -6,13 +6,16 @@ class FavouritesController extends AppController {
     public $uses = array('Favourite', 'BuildOrder');
 
 	public $components = array(
-    	'Auth',
 		'Session',
 		'Cookie',
 		'Paginator',
 		'Search.Prg',
 		'Users.RememberMe',
 	);
+
+    public function isAuthorized() {
+        return true;
+    }
 	
 	public function index() {
         $favourites = $this->Paginator->paginate(array('Favourite.user_id' => $this->Auth->user('id')));
