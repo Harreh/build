@@ -13,7 +13,7 @@ class FavouritesController extends AppController {
 		'Users.RememberMe',
 	);
 
-    public function isAuthorized() {
+    public function isAuthorized($user = null) {
         return true;
     }
 	
