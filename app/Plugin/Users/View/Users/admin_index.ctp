@@ -11,18 +11,12 @@
 	</div>
 
 	<div class='col-md-9'>
-		<h2><?php echo __d('users', 'Users'); ?></h2>
+		<div class='page-header'>
+			<h1><?php echo __d('users', 'Users'); ?></h1>
+		</div>
 
-		<h3><?php echo __d('users', 'Filter'); ?></h3>
-		<?php 
-		echo $this->Form->create($model, array('action' => 'search'));
-			echo $this->Form->input('username', array('label' => __d('users', 'Username')));
-			echo $this->Form->input('email', array('label' => __d('users', 'Email')));
-		echo $this->Form->end(__d('users', 'Search'));
-		?>
+		<?php echo $this->element('Users.filter'); ?>
 
-		<?php echo $this->element('Users.paging'); ?>
-		<?php echo $this->element('Users.pagination'); ?>
 		<table class='table'>
 			<tr>
 				<th><?php echo $this->Paginator->sort('username'); ?></th>

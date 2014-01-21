@@ -12,22 +12,7 @@
 
 	<div class='col-md-9'>
 		<h2><?php echo __d('users', 'Users'); ?></h2>
-		<?php
-			echo $this->Form->create($model, array(
-				'action' => 'search'));
-			echo $this->Form->input('username', array(
-				'label' => __d('users', 'Username')));
-			echo $this->Form->input('email', array(
-				'label' => __d('users', 'Email')));
-			echo $this->Form->input('Profile.name', array(
-				'label' => __d('users', 'Name')));
-			echo $this->Form->end(__d('users', 'Search'));
-		?>
-		<p><?php
-		echo $this->Paginator->counter(array(
-			'format' => __d('users', 'Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%')
-		));
-		?></p>
+		<?php echo $this->element('Users.filter'); ?>
 
 		<table class='table'>
 		<tr>
@@ -35,21 +20,23 @@
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo __d('users', 'Actions'); ?></th>
 		</tr>
-		<tr>
-			<td><?php echo $user[$model]['username']; ?></td>
-			<td><?php echo $user[$model]['created']; ?></td>
-			<td>
-				<?php echo $this->Html->link(__d('users', 'View'), array('action' => 'view', $user[$model]['id'])); ?>
-				<?php echo $this->Html->link(__d('users', 'Edit'), array('action' => 'edit', $user[$model]['id'])); ?>
-				<?php echo $this->Html->link(
-					__d('users', 'Delete'),
-					array('action' => 'delete', $user[$model]['id']),
-					null,
-					sprintf(__d('users', 'Are you sure you want to delete # %s?'), $user[$model]['id'])
-				); ?>
-			</td>
-		</tr>
+		<?php foreach($users as $user) : ?>
+			<tr>
+				<td><?php echo $user[$model]['username']; ?></td>
+				<td><?php echo $user[$model]['created']; ?></td>
+				<td>
+					<?php echo $this->Html->link(__d('users', 'View'), array('action' => 'view', $user[$model]['id'])); ?>
+					<?php echo $this->Html->link(__d('users', 'Edit'), array('action' => 'edit', $user[$model]['id'])); ?>
+					<?php echo $this->Html->link(
+						__d('users', 'Delete'),
+						array('action' => 'delete', $user[$model]['id']),
+						null,
+						sprintf(__d('users', 'Are you sure you want to delete # %s?'), $user[$model]['id'])
+					); ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
 		</table>
-		<?php echo $this->element('Users.paging'); ?>
+		<?php echo $this->element('Users.pagination'); ?>
 	</div>
 </div>
