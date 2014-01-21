@@ -15,7 +15,6 @@
 			<h1><?php echo __d('users', 'Login'); ?></h1>
 		</div>
 		<?php
-		echo $this->Session->flash('auth', array('class' => 'alert-info', 'element' => 'flash_notification'));
 		echo $this->Form->create($model, array(
 			'action' => 'login',
 			'id' => 'LoginForm')
