@@ -4,7 +4,6 @@ class BuildOrdersController extends AppController {
 	public $helpers = array('form', 'html', 'build', 'Session');
 
 	public $components = array(
-    	'Auth',
 		'Session',
 		'Cookie',
 		'Paginator',
@@ -12,8 +11,13 @@ class BuildOrdersController extends AppController {
 		'Users.RememberMe',
 	);
 
+	public function isAuthorized($user = null) {
+		return true;
+	}
+
 	public function beforeFilter() {
 		$this->Auth->allow('index', 'view');
+		parent::beforeFilter();
 	}
 
 	public function index() {
