@@ -60,7 +60,9 @@ class UsersController extends UsersAppController {
  * @var array
  */
 	public $components = array(
-		'Auth',
+		'Auth' => array(
+			'authorize' => array('Controller')
+		),
 		'Session',
 		'Cookie',
 		'Paginator',
