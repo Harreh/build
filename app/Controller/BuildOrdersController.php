@@ -13,20 +13,6 @@ class BuildOrdersController extends AppController {
 
 	public $presetVars = true;
 
-	protected function _pluginLoaded($plugin, $exception = true) {
-		$result = CakePlugin::loaded($plugin);
-		if ($exception === true && $result === false) {
-			throw new MissingPluginException(array('plugin' => $plugin));
-		}
-		return $result;
-	}
-
-	protected function _setupComponents() {
-		if ($this->_pluginLoaded('Search', false)) {
-			$this->components[] = 'Search.Prg';
-		}
-	}
-
 	public function isAuthorized($user = null) {
 		return true;
 	}
@@ -134,8 +120,6 @@ class BuildOrdersController extends AppController {
 	}
 
 	public function search() {
-		$this->_pluginLoaded('Search');
-
 		$this->Prg->commonProcess($this->modelClass);
 
 		if (!empty($this->request->params['named']['title'])) {
