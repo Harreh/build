@@ -12,23 +12,26 @@
 
 	<div class='col-md-9'>
 		<div class='page-header'>
-			<h1>Builds</h1>
+			<h1>Search</h1>
 		</div>
 
-		<?php echo $this->element('filter'); ?>
-
-		<table class='table'>
-			<tr>
-				<th>Race</th>
-				<th>Title</th>
-			</tr>
-			<?php foreach ($buildOrders as $buildOrder) : ?>
+		<div class='row col-md-4'>
+			<?php echo $this->element('filter'); ?>
+		</div>
+		<div class='row'>
+			<table class='table'>
 				<tr>
-					<td><?php echo h(ucfirst($buildOrder['BuildOrder']['race'])); ?></td>
-					<td><?php echo $this->html->link($buildOrder['BuildOrder']['title'], array('action' => 'view', $buildOrder['BuildOrder']['id'])); ?></td>
+					<th>Race</th>
+					<th>Title</th>
 				</tr>
-			<?php endforeach; ?>
-		</table>
-		<?php echo $this->element('pagination'); ?>
+				<?php foreach ($buildOrders as $buildOrder) : ?>
+					<tr>
+						<td><?php echo h(ucfirst($buildOrder['BuildOrder']['race'])); ?></td>
+						<td><?php echo $this->html->link($buildOrder['BuildOrder']['title'], array('action' => 'view', $buildOrder['BuildOrder']['id'])); ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</table>
+			<?php echo $this->element('pagination'); ?>
+		</div>
 	</div>
 </div>
