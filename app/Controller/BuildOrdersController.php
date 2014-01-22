@@ -11,6 +11,22 @@ class BuildOrdersController extends AppController {
 		'Users.RememberMe',
 	);
 
+	public $presetVars = true;
+
+	protected function _pluginLoaded($plugin, $exception = true) {
+		$result = CakePlugin::loaded($plugin);
+		if ($exception === true && $result === false) {
+			throw new MissingPluginException(array('plugin' => $plugin));
+		}
+		return $result;
+	}
+
+	protected function _setupComponents() {
+		if ($this->_pluginLoaded('Search', false)) {
+			$this->components[] = 'Search.Prg';
+		}
+	}
+
 	public function isAuthorized($user = null) {
 		return true;
 	}
@@ -115,5 +131,22 @@ class BuildOrdersController extends AppController {
 		$this->Session->setFlash(__('Unable to delete build.'), 'flash_notifcation', array('class' => 'alert-warning'));
 
 		return $this->redirect(array('action' => 'saved'));
+	}
+
+	public function search() {
+		$this->_pluginLoaded('Search');
+
+		$this->Prg->commonProcess($this->modelClass);
+
+		if (!empty($this->request->params['named']['title'])) {
+            $this->Paginator->settings['title'] = $this->request->params['named']['title'];
+		}
+		if (!empty($this->request->params['named']['race'])) {
+            $this->Paginator->settings['race'] = $this->request->params['named']['race'];
+		}
+
+        $this->Paginator->settings[0] = 'search';
+
+		$this->set('buildOrders', $this->Paginator->paginate($this->modelClass));
 	}
 }
