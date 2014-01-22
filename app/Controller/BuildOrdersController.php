@@ -148,5 +148,9 @@ class BuildOrdersController extends AppController {
         $this->Paginator->settings[0] = 'search';
 
 		$this->set('buildOrders', $this->Paginator->paginate($this->modelClass));
+
+		if (isset($this->request->params['named']['race'])) {
+			$this->set('selected', $this->request->params['named']['race']);
+		}
 	}
 }
