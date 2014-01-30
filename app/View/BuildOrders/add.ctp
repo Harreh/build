@@ -37,7 +37,8 @@
 					'type' => 'textarea',
 					'label' => 'Build',
 					'rows' => 20,
-					'oninput' => 'get_build()'
+					'oninput' => 'get_build()',
+					'class' => 'form-control build-input'
 				)
 			);
 			echo $this->Form->end(array('label' => 'Submit', 'div' => 'form-group', 'class' => 'btn btn-primary btn-lg btn-block'));
