@@ -37,7 +37,8 @@ class AppController extends Controller {
 		'Session',
     	'Auth' => array(
 			'authorize' => array('Controller')
-		)
+		),
+		'Security'
 	);
 
 	public function isAuthorized($user) {
