@@ -13,6 +13,6 @@
 		<div class='page-header'>
 			<h1>You haven't created any builds yet!</h1>
 		</div>
-		Why don't you start by <a href='<?php $this->Html->url(array('controller' => 'buildorders', 'action' => 'add')); ?>'>creating</a> one now?
+		Why don't you start by <?php echo $this->Html->link('creating', '/add'); ?> one now?
 	</div>
 </div>
