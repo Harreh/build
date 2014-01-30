@@ -15,33 +15,38 @@
 		<div class='page-header'>
 			<h1>Edit Build Order</h1>
 		</div>
-		<?php echo $this->Form->create('buildOrder', array('class' => 'form-horizontal')); ?>
-			<div class='form-group'>
-				<label for='title' class='col-sm-2 control-label'>Title</label>
-				<div class='col-sm-10'>
-					<input id='title' name='title' type='text'class='form-control' value='<?php echo h($buildOrder['BuildOrder']['title']); ?>'>
-				</div>
-			</div>
-			<div class='form-group'>
-				<label for='race' class='col-sm-2 control-label'>Race</label>
-				<div class='col-sm-10'>
-					<select id='race' name='race' class='form-control' onchange='get_build();'>
-						<option value='terran' <?php echo $buildOrder['BuildOrder']['race'] == 'terran' ? 'selected' : ''; ?>>Terran</option>
-						<option value='protoss' <?php echo $buildOrder['BuildOrder']['race'] == 'protoss' ? 'selected' : ''; ?>>Protoss</option>
-						<option value='zerg' <?php echo $buildOrder['BuildOrder']['race'] == 'zerg' ? 'selected' : ''; ?>>Zerg</option>
-					</select>
-				</div>
-			</div>
-			<div class='form-group'>
-				<label for="build" class="col-sm-2 control-label">Build</label>
-				<div class="col-sm-10">
-					<textarea id='build' name='build' class="form-control build-input" rows='20' oninput='get_build()'><?php echo h($buildOrder['BuildOrder']['build']); ?></textarea>
-				</div>
-			</div>
-			<div class='form-group'>
-				<button class="btn btn-primary btn-lg btn-block" type='submit'>Save</button>
-			</div>
-		<?php echo $this->form->end(); ?>
+		<div class='col-sm-10'>
+			<?php
+			echo $this->Form->create('buildOrder',
+				array(
+					'class' => 'form-horizontal',
+					'inputDefaults' => array(
+						'div' => 'form-group',
+						'class' => 'form-control'
+					)
+				)
+			);
+			echo $this->Form->input('title', array('label' => 'Title', 'value' => $buildOrder['BuildOrder']['title']));
+			echo $this->Form->input('race',
+				array(
+					'options' => array('terran' => 'Terran', 'protoss' => 'Protoss', 'zerg' => 'Zerg'),
+					'label' => 'Race',
+					'value' => $buildOrder['BuildOrder']['race']
+				)
+			);
+			echo $this->Form->input('build',
+				array(
+					'type' => 'textarea',
+					'label' => 'Build',
+					'rows' => 20,
+					'oninput' => 'get_build()',
+					'value' => $buildOrder['BuildOrder']['build'],
+					'class' => 'form-control build-input'
+				)
+			);
+			echo $this->form->end();
+			?>
+		</div>
 	</div>
 
 	<div class='col-md-4'>
