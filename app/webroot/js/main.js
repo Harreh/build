@@ -1,5 +1,5 @@
 function get_build() {
-	text = $('#build').val();
+	text = $('#buildOrderBuild').val();
 
 	lines = text.split("\n");
 	html = "";
@@ -34,7 +34,7 @@ function match_line(line) {
 }
 
 function item(supply, name) {
-	return "<a class='list-group-item'><span class='badge'><img src='/build/img/" + $('#race').val() + "_supply.gif'>&nbsp;" + escapeHtml(supply) + "</span><span style='margin-left: 10px'>" + escapeHtml(name) + "</span></a>";
+	return "<a class='list-group-item'><span class='badge'><img src='/build/img/" + $('#buildOrderRace').val() + "_supply.gif'>&nbsp;" + escapeHtml(supply) + "</span><span style='margin-left: 10px'>" + escapeHtml(name) + "</span></a>";
 }
 
 function resource_item(resource, amount, name) {
