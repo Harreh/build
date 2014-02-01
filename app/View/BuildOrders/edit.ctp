@@ -44,7 +44,7 @@
 					'class' => 'form-control build-input'
 				)
 			);
-			echo $this->form->end();
+			echo $this->Form->end(array('label' => 'Submit', 'div' => 'form-group', 'class' => 'btn btn-primary btn-lg btn-block'));
 			?>
 		</div>
 	</div>
