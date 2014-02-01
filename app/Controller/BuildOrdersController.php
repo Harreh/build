@@ -8,7 +8,7 @@ class BuildOrdersController extends AppController {
 		'Cookie',
 		'Paginator',
 		'Search.Prg',
-		'Users.RememberMe',
+		'Users.RememberMe'
 	);
 
 	public $presetVars = true;
@@ -29,7 +29,7 @@ class BuildOrdersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->request->data['user_id'] = $this->Auth->user('id');
-			if ($this->BuildOrder->save($this->request->data)) {
+			if ($this->BuildOrder->save($this->request->data['buildOrder'])) {
 		    	$this->Session->setFlash(__('Your build has been saved'), 'flash_notification', array('class' => 'alert-success'));
 			    return $this->redirect(array('action' => 'view', $this->BuildOrder->id));
 			}
@@ -85,7 +85,7 @@ class BuildOrdersController extends AppController {
 
 		$this->BuildOrder->id = $id;
 		if ($this->request->is('post')) {
-			if ($this->BuildOrder->save($this->request->data)) {
+			if ($this->BuildOrder->save($this->request->data['buildOrder'])) {
 				$this->Session->setFlash(__('Your changes have been saved.'), 'flash_notification', array('class' => 'alert-success'));
 				return $this->redirect(array('action' => 'edit', $id));
 			}
