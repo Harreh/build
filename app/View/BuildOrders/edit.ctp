@@ -39,7 +39,7 @@
 					'type' => 'textarea',
 					'label' => 'Build',
 					'rows' => 20,
-					'oninput' => 'get_build()',
+					'oninput' => 'construct_previews();',
 					'value' => $buildOrder['BuildOrder']['build'],
 					'class' => 'form-control build-input'
 				)
@@ -51,17 +51,14 @@
 
 	<div class='col-md-4'>
 		<div class='page-header'><h1>Preview</h1></div>
-		<div id='build-preview' class='list-group'>
-			<?php
-			$this->build->race = $buildOrder['BuildOrder']['race'];
-			$buildOrder['BuildOrder']['build'] = explode("\n", $buildOrder['BuildOrder']['build']);
-			foreach ($buildOrder['BuildOrder']['build'] as $line) {
-				if (empty($line)) {
-					continue;
-				}
-				echo $this->build->line($line);
-			}
-			?>
-		</div>
+			<div class='collapse-group'>
+				<div id='build-preview' class='list-group in collapse collapseable'>
+					<?php echo $this->build->generate_build($buildOrder['BuildOrder']['race'], $buildOrder['BuildOrder']['build']); ?>
+				</div>
+				<div id='build-preview-text' class='collapse collapseable'>
+					<?php echo $this->build->generate_build_text($buildOrder['BuildOrder']['race'], $buildOrder['BuildOrder']['build']); ?>
+				</div>
+				<button class='btn btn-default' data-toggle="collapse" data-target=".collapseable">Toggle View</button>
+			</div>
 	</div>
 </div>

@@ -39,32 +39,11 @@
 			<h1><?php echo h($title_for_layout); ?></h1>
 		</div>
 		<div class='collapse-group'>
-			<div class='in collapse collapseable'>
-				<div class='list-group'>
-					<?php
-					$this->build->race = $buildOrder['BuildOrder']['race'];
-					$buildOrder['BuildOrder']['build'] = explode("\n", $buildOrder['BuildOrder']['build']);
-					foreach ($buildOrder['BuildOrder']['build'] as $line) {
-						if (empty($line)) {
-							continue;
-						}
-						echo $this->build->line($line);
-					}
-					?>
-				</div>
+			<div class='list-group in collapse collapseable'>
+				<?php echo $this->build->generate_build($buildOrder['BuildOrder']['race'], $buildOrder['BuildOrder']['build']); ?>
 			</div>
 			<div class='collapse collapseable'>
-				<pre><?php
-					$lines = '';
-					foreach ($buildOrder['BuildOrder']['build'] as $line) {
-						if (empty($line)) {
-							continue;
-						}
-						$lines .= $line."\n";
-					}
-
-					$lines = rtrim($lines, "\n");
-					echo $lines; ?></pre>
+				<?php echo $this->build->generate_build_text($buildOrder['BuildOrder']['race'], $buildOrder['BuildOrder']['build']); ?>
 			</div>
 			<button class='btn btn-default' data-toggle="collapse" data-target=".collapseable">Toggle View</button>
 		</div>
