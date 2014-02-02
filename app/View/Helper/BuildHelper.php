@@ -62,4 +62,32 @@ class BuildHelper extends AppHelper {
 		}
 		return "<a class='list-group-item'><span class='badge'><img src='/build/img/minerals.gif'>&nbsp;".$minerals."&nbsp;<img src='/build/img/vespene-".$this->race.".gif'>&nbsp;$vespene</span><span style='margin-left: 10px'>".h($body)."</span></a>";
 	}
+
+	public function generate_build($race, $buildOrder) {
+		$this->race = $race;
+		$buildOrder = explode("\n", $buildOrder);
+		$result = '';
+		foreach ($buildOrder as $line) {
+			if (empty($line)) {
+				continue;
+			}
+			$result .= $this->line($line);
+		}
+		return $result;
+	}
+
+	public function generate_build_text($race, $buildOrder) {
+		$this->race = $race;
+		$buildOrder = explode("\n", $buildOrder);
+		$result = '<pre>';
+		foreach ($buildOrder as $line) {
+			if (empty($line)) {
+				continue;
+			}
+			$result .= $line."\n";
+		}
+		$result = rtrim($result, "\n");
+		$result .= '</pre>';
+		return $result;
+	}
 }
