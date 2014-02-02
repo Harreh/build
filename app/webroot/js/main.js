@@ -1,3 +1,8 @@
+function construct_previews() {
+	get_build();
+	get_text_build();
+}
+
 function get_build() {
 	text = $('#buildOrderBuild').val();
 
@@ -7,6 +12,19 @@ function get_build() {
 		html += match_line(elem);
 	});
 	$('#build-preview').html(html);
+}
+
+function get_text_build() {
+	text = $('#buildOrderBuild').val();
+
+	lines = text.split("\n");
+	result = "<pre>";
+	lines.forEach(function(elem) {
+		result += elem;
+		result += "\n";
+	});
+	result += "</pre>";
+	$('#build-preview-text').html(result);
 }
 
 function match_line(line) {
