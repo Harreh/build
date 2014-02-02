@@ -64,30 +64,46 @@ class BuildHelper extends AppHelper {
 	}
 
 	public function generate_build($race, $buildOrder) {
-		$this->race = $race;
-		$buildOrder = explode("\n", $buildOrder);
-		$result = '';
-		foreach ($buildOrder as $line) {
-			if (empty($line)) {
-				continue;
-			}
-			$result .= $this->line($line);
+		if (!is_string($race) || !is_string($buildOrder)) {
+			throw new CakeException('Incorrect input type for BuildHelper/generate_build');
 		}
-		return $result;
+
+		$race = strtolower($race);
+		if ($race == 'terran' || $race == 'protoss' || $race == 'zerg') {
+			$this->race = $race;
+			$buildOrder = explode("\n", $buildOrder);
+			$result = '';
+			foreach ($buildOrder as $line) {
+				if (empty($line)) {
+					continue;
+				}
+				$result .= $this->line($line);
+			}
+			return $result;
+		}
+		throw new CakeException('Incorrect input value for BuildHelper/generate_build/race');
 	}
 
 	public function generate_build_text($race, $buildOrder) {
-		$this->race = $race;
-		$buildOrder = explode("\n", $buildOrder);
-		$result = '<pre>';
-		foreach ($buildOrder as $line) {
-			if (empty($line)) {
-				continue;
-			}
-			$result .= $line."\n";
+		if (!is_string($race) || !is_string($buildOrder)) {
+			throw new CakeException('Incorrect input type for BuildHelper/generate_build');
 		}
-		$result = rtrim($result, "\n");
-		$result .= '</pre>';
-		return $result;
+
+		$race = strtolower($race);
+		if ($race == 'terran' || $race == 'protoss' || $race == 'zerg') {
+			$this->race = $race;
+			$buildOrder = explode("\n", $buildOrder);
+			$result = '<pre>';
+			foreach ($buildOrder as $line) {
+				if (empty($line)) {
+					continue;
+				}
+				$result .= $line."\n";
+			}
+			$result = rtrim($result, "\n");
+			$result .= '</pre>';
+			return $result;
+		}
+		throw new CakeException('Incorrect input value for BuildHelper/generate_build/race');
 	}
 }
