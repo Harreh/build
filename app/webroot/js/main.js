@@ -11,6 +11,7 @@ function get_build() {
 	lines.forEach(function(elem) {
 		html += match_line(elem);
 	});
+
 	$('#build-preview').html(html);
 }
 
@@ -23,7 +24,9 @@ function get_text_build() {
 		result += elem;
 		result += "\n";
 	});
+	result.replace(/\s+$/,'');
 	result += "</pre>";
+
 	$('#build-preview-text').html(result);
 }
 
