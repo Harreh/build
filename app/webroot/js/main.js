@@ -39,7 +39,7 @@ function item(supply, name) {
 
 function resource_item(resource, amount, name) {
 	if (resource.toUpperCase() == 'GAS' || resource == 'VESPENE') {
-		resource = "vespene-" + $('#race').val() + ".gif";
+		resource = "vespene-" + $('#buildOrderRace').val() + ".gif";
 	}
 	if (resource.toUpperCase() == 'MINERALS') {
 		resource = 'minerals.gif';
