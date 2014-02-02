@@ -80,7 +80,7 @@ class BuildOrdersController extends AppController {
 
 		if (!$this->BuildOrder->isOwnedBy($id, $this->Auth->user('id'))) {
 			$this->Session->setFlash(__('You cannot modify that build.'), 'flash_notification', array('class' => 'alert-danger'));
-			return $this->redirect(array('action' => 'index'));
+			return $this->redirect(array('action' => 'view', $id));
 		}
 
 		$this->BuildOrder->id = $id;
