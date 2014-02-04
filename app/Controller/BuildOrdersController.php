@@ -57,7 +57,7 @@ class BuildOrdersController extends AppController {
 		}
 
 		$this->loadModel('Favourite');
-		$favourite = $this->Favourite->find('first', array('conditions' => array('Favourite.user_id' => $this->Auth->user('id'), 'Favourite.build_id' => $id)));
+		$favourite = $this->Favourite->find('first', array('fields' => array('id'), 'conditions' => array('Favourite.user_id' => $this->Auth->user('id'), 'Favourite.build_id' => $id)));
 		if ($favourite) {
 			$this->set('favourite', $favourite);
 		}
